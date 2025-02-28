@@ -16,7 +16,7 @@ Python 3.9
 Docker
 Terraform
 Ansible
-Jenkins (optional)
+Jenkins 
 ```
 ## Installation
 Clone the repository:

@@ -1,0 +1,29 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Instalează Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Pornește serviciul Docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Copiază aplicația pe server
+      copy:
+        src: ../app/
+        dest: /opt/qr-code-generator
+
+    - name: Construiește și rulează containerul Docker
+      docker_container:
+        name: qr-code-generator
+        image: qr-code-generator
+        state: started
+        ports:
+          - "5000:5000"
+        volumes:
+          - /opt/qr-code-generator:/app

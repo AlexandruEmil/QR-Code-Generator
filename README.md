@@ -1,90 +1,85 @@
 # QR-Code-Generator
  
-Acest proiect este o aplicație Flask care transformă orice URL într-un cod QR. Aplicația este containerizată cu Docker, iar infrastructura este gestionată cu Terraform și configurată cu Ansible. Procesul de build și deploy este automatizat folosind Jenkins.
+This project is a Flask application that converts any URL into a QR code. The application is containerized with Docker, and the infrastructure is managed with Terraform and configured with Ansible. The build and deployment process is automated using Jenkins.
 
-Caracteristici
-Generare Coduri QR: Transformă orice URL într-un cod QR.
-
-Containerizare: Aplicația rulează într-un container Docker.
-
-Infrastructură ca Cod: Infrastructura este creată și gestionată cu Terraform.
-
-Automatizare: Procesul de build și deploy este automatizat cu Jenkins.
-
-Cum să Folosești
-Cerințe
+# Features
+```
+QR Code Generation: Converts any URL into a QR code.
+Containerization: The application runs in a Docker container.
+Infrastructure as Code: The infrastructure is created and managed with Terraform.
+Automation: The build and deployment process is automated with Jenkins.
+```
+# How to Use
+## Requirements
 Python 3.9
-
+```
 Docker
-
 Terraform
-
 Ansible
-
-Jenkins (opțional)
-
-Instalare
-Clonează repository-ul:
-
+Jenkins (optional)
+```
+## Installation
+Clone the repository:
+```
 bash
-Copy
 git clone https://github.com/username/qr-code-generator.git
 cd qr-code-generator
-Construiește și rulează aplicația cu Docker:
-
+```
+## Build and run the application with Docker:
+```
 bash
-Copy
 cd app
 docker build -t qr-code-generator .
 docker run -d -p 5000:5000 qr-code-generator
-Accesează aplicația la:
+```
+## Access the application at:
 
-Copy
-http://localhost:5000/generate-qr?url=<your-url>
-Infrastructură cu Terraform
-Navighează în directorul terraform:
-
+`http://localhost:5000/generate-qr?url=<your-url>`
+# Infrastructure with Terraform
+## Navigate to the terraform directory:
+```
 bash
-Copy
 cd terraform
-Inițializează și aplică configurația Terraform:
-
+```
+Initialize and apply the Terraform configuration:
+```
 bash
-Copy
 terraform init
 terraform apply
-Configurare cu Ansible
-Navighează în directorul ansible:
-
+```
+# Configuration with Ansible
+## Navigate to the ansible directory:
+```
 bash
-Copy
 cd ansible
-Rulează playbook-ul Ansible:
-
+```
+## Run the Ansible playbook:
+```
 bash
-Copy
 ansible-playbook -i inventory playbook.yml
-Automatizare cu Jenkins
-Configurează un job Jenkins care să folosească Jenkinsfile.
+Automation with Jenkins
+```
+## Set up a Jenkins job using the Jenkinsfile.
 
-Jenkins va construi și deploy-a aplicația automat.
+Jenkins will automatically build and deploy the application.
 
-Structura Proiectului
-Copy
+# Project Structure
+```
 qr-code-generator/
-├── app/                  # Aplicația Flask
-│   ├── app.py            # Codul Python pentru generarea QR
-│   ├── requirements.txt  # Dependințele Python
-│   └── Dockerfile        # Dockerfile pentru containerizare
-├── terraform/            # Configurația Terraform
-│   └── main.tf           # Fișierul Terraform pentru AWS
-├── ansible/              # Playbook-uri Ansible
-│   └── playbook.yml      # Configurația serverului
-├── jenkins/              # Configurația Jenkins
-│   └── Jenkinsfile       # Pipeline-ul Jenkins
-└── README.md             # Documentația proiectului
-Contribuții
-Contribuțiile sunt binevenite! Te rog să deschizi un issue sau un pull request pentru a sugera îmbunătățiri.
+├── app/                  # Flask application
+│   ├── app.py            # Python code for QR generation
+│   ├── requirements.txt  # Python dependencies
+│   └── Dockerfile        # Dockerfile for containerization
+├── terraform/            # Terraform configuration
+│   └── main.tf           # Terraform file for AWS
+├── ansible/              # Ansible playbooks
+│   └── playbook.yml      # Server configuration
+├── jenkins/              # Jenkins configuration
+│   └── Jenkinsfile       # Jenkins pipeline
+└── README.md             # Project documentation
+```
+# License
+This project is licensed under the MIT License.
 
-Licență
-Acest proiect este licențiat sub MIT License.
+> [!NOTE]  
+On `main.tf` you must make an IAM user to have an `acces_key` and `secret_key`
